@@ -9,8 +9,8 @@ class PasswordCommand(sublime_plugin.TextCommand):
     
     def run(self, edit):
         population = self.secure_chars if self.secure else self.chars
-        p = ''.join(sample(population, self.length))
         for region in self.view.sel():
+            p = ''.join(sample(population, self.length))
             self.view.replace(edit, region, p)
 
 class GenerateShortPasswordCommand(PasswordCommand):
